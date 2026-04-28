@@ -1,0 +1,42 @@
+[
+  {
+    "name": "search_products",
+    "description": "Searches products.",
+    "parameters": {
+      "query": {"type": "string"},
+      "category": {"type": "string"},
+      "max_results": {"type": "integer"}
+    },
+    "server_name": "ShopMCP"
+  },
+  {
+    "name": "get_stock_price",
+    "description": "Gets price.",
+    "parameters": {
+      "ticker": {"type": "string"}
+    },
+    "server_name": "FinTools"
+  },
+  {
+    "name": "create_github_issue",
+    "description": "Creates an issue in a GitHub repository. Requires a valid GitHub token with repo write permissions. Rate limited to 5000 requests/hour per token. Use this when you need to track a bug, feature request, or task in a specific repository.\n\nExample: create_github_issue(owner='anthropics', repo='anthropic-sdk-python', title='Bug: streaming fails on timeout', body='Detailed description...', labels=['bug']) → {'id': 1234, 'url': 'https://github.com/...'}\n\nFails with 404 if repo does not exist or token lacks permissions.",
+    "parameters": {
+      "owner": {"type": "string", "description": "GitHub username or organization name"},
+      "repo": {"type": "string", "description": "Repository name (without owner prefix)"},
+      "title": {"type": "string", "description": "Issue title, max 256 characters"},
+      "body": {"type": "string", "description": "Issue body in GitHub Flavored Markdown"},
+      "labels": {"type": "array", "items": {"type": "string"}, "description": "List of label names to apply"}
+    },
+    "server_name": "DevOpsMCP"
+  },
+  {
+    "name": "send_slack_message",
+    "description": "Sends a Slack message. This tool provides comprehensive messaging capabilities for the Slack platform and allows users to send messages to channels or direct message conversations. The tool supports various message formats and integrates with Slack's messaging infrastructure to provide reliable message delivery across different workspace configurations and channel types.",
+    "parameters": {
+      "channel": {"type": "string"},
+      "text": {"type": "string"},
+      "thread_ts": {"type": "string"}
+    },
+    "server_name": "SlackMCP"
+  }
+]
